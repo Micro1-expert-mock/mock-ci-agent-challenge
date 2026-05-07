@@ -1,0 +1,16 @@
+{
+  "name": "mock-ci-agent-challenge",
+  "version": "1.0.0",
+  "description": "A tiny repo for testing whether an agent can fix failing lint/test checks with a minimal patch and open a draft PR.",
+  "main": "src/cart.js",
+  "scripts": {
+    "lint": "eslint src tests",
+    "test": "jest --runInBand",
+    "check": "npm run lint && npm test"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0"
+  },
+  "license": "MIT"
+}
