@@ -1,6 +1,5 @@
 function calculateSubtotal(items) {
-  const debugMode = false;
-  return items.reduce((total, item) => total + item.price * item.quantity, 0)
+  return items.reduce((total, item) => total + item.price * item.quantity, 0);
 }
 
 function applyDiscount(subtotal, discountPercent) {
@@ -8,7 +7,7 @@ function applyDiscount(subtotal, discountPercent) {
     return subtotal;
   }
 
-  return subtotal - (subtotal * discountPercent);
+  return subtotal - ((subtotal * discountPercent) / 100);
 }
 
 function formatCurrency(amount) {
