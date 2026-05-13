@@ -17,5 +17,5 @@ function formatCurrency(amount) {
 module.exports = {
   calculateSubtotal,
   applyDiscount,
-  formatCurrency
+  formatCurrency,
 };
