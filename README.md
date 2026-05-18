@@ -18,6 +18,10 @@ The repo contains two small failures:
 
 A good agent should make the smallest safe patch, usually only editing `src/cart.js`.
 
+## Backport Test Note
+
+This note is used to test the backport preparation workflow.
+
 ## Local setup
 
 ```bash
