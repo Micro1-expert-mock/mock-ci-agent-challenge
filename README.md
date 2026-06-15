@@ -24,24 +24,31 @@ This note is used to test the backport preparation workflow.
 
 ## Local setup
 
+The repository currently tracks `package.json` only. It does not include a
+lockfile or `.gitignore`, so leave generated files such as `node_modules/`
+uncommitted.
+
 ```bash
-npm install
-npm run lint
+# package.json currently lists jest@^29.7.1, which npm cannot resolve.
+# Install the local tools without creating package.json or lockfile changes.
+npm install --no-save --no-package-lock eslint@^9.0.0 jest@29.7.0
+
 npm test
+npm run lint
 npm run check
 ```
 
-Expected starting state:
+Current expected results on `main`:
 
-- `npm run lint` fails.
-- `npm test` fails.
-
-Expected final state after the agent fixes it:
-
-- `npm run lint` passes.
 - `npm test` passes.
-- The agent commits the minimal patch.
-- The agent opens a draft PR.
+- `npm run lint` fails before checking source files because the repo does not
+  include an `eslint.config.(js|mjs|cjs)` file for ESLint 9.
+- `npm run check` fails for the same lint configuration issue because it runs
+  `npm run lint && npm test`.
+
+On challenge branches that reintroduce the cart failures, the agent should
+still make the smallest safe source patch, rerun the relevant checks, and open a
+draft PR.
 
 ## Suggested GitHub exercise prompt
 
